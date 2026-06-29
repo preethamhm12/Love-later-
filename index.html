@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Ranjita ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff758f;
+            --rose-gold: #b76e79;
+            --bg-grad: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+            --glass: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --shadow: 0 8px 32px 0 rgba(244, 63, 94, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-grad);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* Continuous Floating Hearts Background */
+        #bg-hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            bottom: -20px;
+            color: var(--primary);
+            fill: currentColor;
+            opacity: 0.6;
+            animation: floatUp linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: inherit;
+            }
+            90% {
+                opacity: inherit;
+            }
+            100% {
+                transform: translateY(-105vh) translateX(var(--travel-x)) rotate(var(--rotate));
+                opacity: 0;
+            }
+        }
+
+        /* Glassmorphism Containers */
+        .card-container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 550px;
+            min-height: 400px;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .screen {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .screen.active {
+            display: flex;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography & Core Elements */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #c9184a;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #c9184a;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #590d22;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        /* Custom Soft Glowing Buttons */
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            outline: none;
+        }
+
+        .btn:hover, .btn:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.6), 0 0 10px rgba(255, 77, 109, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Heart Animations */
+        .heartbeat-icon {
+            width: 80px;
+            height: 80px;
+            fill: var(--primary);
+            filter: drop-shadow(0 0 10px rgba(255, 77, 109, 0.6));
+            animation: heartbeat 1.4s infinite ease-in-out;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.12); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.12); }
+            70% { transform: scale(1); }
+        }
+
+        /* Loading Screen Assets */
+        .loader-bar-bg {
+            width: 80%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .loader-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            transition: width 0.2s linear;
+        }
+
+        .loading-text {
+            font-size: 1rem;
+            color: #590d22;
+            font-weight: 400;
+            min-height: 24px;
+        }
+
+        /* Love Letter Style */
+        .letter-box {
+            width: 100%;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-height: 380px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary) transparent;
+        }
+
+        .letter-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .letter-box::-webkit-scrollbar-thumb {
+            background-color: var(--secondary);
+            border-radius: 10px;
+        }
+
+        .letter-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #4a0e17;
+            white-space: pre-line;
+        }
+
+        .letter-text b {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            color: #c9184a;
+            display: block;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+
+        /* Sparkle Particle Design */
+        .sparkle-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            background: radial-gradient(circle, #fff 20%, transparent 70%);
+            border-radius: 50%;
+            animation: flash 1s infinite alternate;
+        }
+
+        @keyframes flash {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Proposal Choice System */
+        .choice-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 1.5rem;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-think {
+            background: white;
+            color: #590d22;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .btn-think:hover, .btn-think:focus {
+            background: #fff0f3;
+            color: var(--primary);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .final-message {
+            font-size: 1.25rem;
+            color: #590d22;
+            font-weight: 600;
+            line-height: 1.5;
+            margin: 1rem 0;
+        }
+
+        /* Footer Attribution */
+        .footer-credit {
+            position: absolute;
+            bottom: -35px;
+            font-size: 0.85rem;
+            color: #8a5a65;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Canvas Overlay for Celebrations */
+        #celebration-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+            display: none;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 480px) {
+            .card-container {
+                padding: 1.5rem;
+                min-height: 380px;
+            }
+            h1 { font-size: 2.6rem; }
+            h2 { font-size: 2.3rem; }
+            .subtitle { font-size: 0.95rem; margin-bottom: 1.5rem; }
+            .btn { padding: 0.8rem 1.8rem; font-size: 1rem; }
+            .letter-box { max-height: 280px; padding: 1rem; }
+            .letter-text { font-size: 0.88rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgm" src="music.mp3" loop preload="auto"></audio>
+
+    <canvas id="celebration-canvas"></canvas>
+
+    <div id="bg-hearts-container"></div>
+
+    <div class="card-container">
+        
+        <div id="screen-welcome" class="screen active">
+            <div class="sparkle-wrapper">
+                <div class="sparkle" style="top:-10px; left:-10px; width:8px; height:8px; animation-delay:0.2s;"></div>
+                <div class="sparkle" style="bottom:-5px; right:-10px; width:6px; height:6px; animation-delay:0.6s;"></div>
+                <svg class="heartbeat-icon" viewBox="0 0 32 32">
+                    <path d="M16 28.5s-12-7.16-12-14.5C4 8.58 8.03 5 13 5c2.98 0 5.12 1.57 3 4.25C13.88 5.57 16.02 5 19 5c4.97 0 9 3.58 9 9 0 7.34-12 14.5-12 14.5z"/>
+                </svg>
+            </div>
+            <h1>For Ranjita ❤️</h1>
+            <p class="subtitle">“I have something special to tell you…”</p>
+            <button class="btn" id="btn-start">Open My Heart ❤️</button>
+        </div>
+
+        <div id="screen-loading" class="screen">
+            <svg class="heartbeat-icon" viewBox="0 0 32 32" style="animation-duration: 0.9s; width: 60px; height: 60px;">
+                <path d="M16 28.5s-12-7.16-12-14.5C4 8.58 8.03 5 13 5c2.98 0 5.12 1.57 3 4.25C13.88 5.57 16.02 5 19 5c4.97 0 9 3.58 9 9 0 7.34-12 14.5-12 14.5z"/>
+            </svg>
+            <p class="loading-text" id="loading-status">Collecting memories…</p>
+            <div class="loader-bar-bg">
+                <div class="loader-bar-fill" id="loader-progress"></div>
+            </div>
+        </div>
+
+        <div id="screen-letter" class="screen">
+            <div class="letter-box" id="letter-scroll-box">
+                <p class="letter-text" id="typing-destination"></p>
+            </div>
+            <button class="btn" id="btn-continue-proposal" style="display: none;">Continue ❤️</button>
+        </div>
+
+        <div id="screen-proposal" class="screen">
+            <div class="sparkle-wrapper">
+                <div class="sparkle" style="top:10px; left:-20px; width:7px; height:7px; animation-delay:0.1s;"></div>
+                <div class="sparkle" style="top:-15px; right:15px; width:9px; height:9px; animation-delay:0.4s;"></div>
+                <div class="sparkle" style="bottom:10px; right:-15px; width:6px; height:6px; animation-delay:0.8s;"></div>
+                <svg class="heartbeat-icon" viewBox="0 0 32 32">
+                    <path d="M16 28.5s-12-7.16-12-14.5C4 8.58 8.03 5 13 5c2.98 0 5.12 1.57 3 4.25C13.88 5.57 16.02 5 19 5c4.97 0 9 3.58 9 9 0 7.34-12 14.5-12 14.5z"/>
+                </svg>
+            </div>
+            <h2>Ranjita ❤️</h2>
+            <p class="subtitle" style="margin-bottom: 1rem;">“Will you be a special part of my life?”</p>
+            <div class="choice-buttons">
+                <button class="btn" id="btn-yes">💖 Yes</button>
+                <button class="btn btn-think" id="btn-think">🌸 Let Me Think</button>
+            </div>
+        </div>
+
+        <div id="screen-outcome" class="screen">
+            <div id="outcome-icon-container"></div>
+            <p class="final-message" id="outcome-text"></p>
+        </div>
+
+        <div class="footer-credit">Made with ❤️ by Preetam</div>
+    </div>
+
+    <script>
+        /* Document Global Configuration */
+        const bgm = document.getElementById('bgm');
+        const letterText = `Dear Ranjita,\n\nSome feelings are difficult to explain with ordinary words. Every time I think of you, my heart becomes calm and happy.\n\nYou have unknowingly become one of the most beautiful parts of my life. Your smile, your kindness, and your presence make every day feel brighter.\n\nI don’t know what the future will bring, but I know I would love the chance to walk that journey with you.\n\nI’m not asking for perfection.\n\nI’m only asking for one chance to make beautiful memories together.\n\nNo matter what your answer is, I will always respect you and appreciate you.\n\nFrom the bottom of my heart…\n\nWill you go on a date with me?\n\nWith love,\n<b>❤️ Preetam ❤️</b>`;
+
+        /* Real-time Performance Adaptive Ambient Background Hearts Generator */
+        const bgContainer = document.getElementById('bg-hearts-container');
+        function spawnBackgroundHeart() {
+            if (document.hidden) return; // Freeze hidden generation to balance background loops
+            const heartSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            heartSvg.setAttribute("viewBox", "0 0 32 32");
+            heartSvg.classList.add("floating-heart");
+            
+            // Randomize parameters safely
+            const size = Math.floor(Math.random() * 18) + 10; 
+            const leftPos = Math.random() * 100;
+            const opacity = Math.random() * 0.4 + 0.3;
+            const duration = Math.random() * 6 + 6; 
+            const travelX = (Math.random() * 120 - 60) + 'px';
+            const rotate = (Math.random() * 180 - 90) + 'deg';
+
+            heartSvg.style.width = size + 'px';
+            heartSvg.style.height = size + 'px';
+            heartSvg.style.left = leftPos + '%';
+            heartSvg.style.opacity = opacity;
+            heartSvg.style.animationDuration = duration + 's';
+            heartSvg.style.setProperty('--travel-x', travelX);
+            heartSvg.style.setProperty('--rotate', rotate);
+
+            heartSvg.innerHTML = `<path d="M16 28.5s-12-7.16-12-14.5C4 8.58 8.03 5 13 5c2.98 0 5.12 1.57 3 4.25C13.88 5.57 16.02 5 19 5c4.97 0 9 3.58 9 9 0 7.34-12 14.5-12 14.5z"/>`;
+            
+            bgContainer.appendChild(heartSvg);
+            setTimeout(() => heartSvg.remove(), duration * 1000);
+        }
+        setInterval(spawnBackgroundHeart, 180);
+
+        /* View Switching Logic */
+        function navigateToScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        /* Safe Interactive Audio Pipeline Trigger */
+        document.getElementById('btn-start').addEventListener('click', async () => {
+            try {
+                await bgm.play();
+            } catch (err) {
+                console.log("Audio unlock flagged or handled: ", err);
+                // Fallback catch to ensure seamless experience on hyper-restrictive iOS platforms
+                document.addEventListener('click', () => { bgm.play(); }, { once: true });
+            }
+            startLoadingCycle();
+        });
+
+        /* Loading Screen Progression Logic */
+        function startLoadingCycle() {
+            navigateToScreen('screen-loading');
+            const fill = document.getElementById('loader-progress');
+            const status = document.getElementById('loading-status');
+            
+            const states = [
+                { time: 0, text: "Collecting memories…" },
+                { time: 25, text: "Preparing feelings…" },
+                { time: 55, text: "Writing my heart…" },
+                { time: 80, text: "Almost ready…" }
+            ];
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 1;
+                fill.style.width = progress + '%';
+                
+                const match = states.find(s => s.time === progress);
+                if (match) status.textContent = match.text;
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        navigateToScreen('screen-letter');
+                        startTypewriter();
+                    }, 400);
+                }
+            }, 40); 
+        }
+
+        /* Typewriter Animation Core */
+        function startTypewriter() {
+            const container = document.getElementById('typing-destination');
+            const scrollBox = document.getElementById('letter-scroll-box');
+            const nextBtn = document.getElementById('btn-continue-proposal');
+            let idx = 0;
+            
+            // Clean injection structure handling internal strong tag indicators safely
+            function type() {
+                if (idx < letterText.length) {
+                    if (letterText.substring(idx, idx + 3) === '<b>') {
+                        let closeIdx = letterText.indexOf('</b>', idx);
+                        container.innerHTML += letterText.substring(idx, closeIdx + 4);
+                        idx = closeIdx + 4;
+                    } else {
+                        container.innerHTML += letterText.charAt(idx);
+                        idx++;
+                    }
+                    scrollBox.scrollTop = scrollBox.scrollHeight;
+                    // Slightly faster character typing speed for optimal readability flow
+                    setTimeout(type, 25);
+                } else {
+                    nextBtn.style.display = "inline-flex";
+                    nextBtn.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            type();
+        }
+
+        document.getElementById('btn-continue-proposal').addEventListener('click', () => {
+            navigateToScreen('screen-proposal');
+        });
+
+        /* Choice Verification & Canvas Configuration System */
+        const canvas = document.getElementById('celebration-canvas');
+        const ctx = canvas.getContext('2d');
+        let animationFrameId;
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+        function createParticle(x, y, type) {
+            const colors = ['#ff4d6d', '#ff758f', '#ff85a1', '#fbb1bd', '#fff'];
+            return {
+                x, y,
+                vx: Math.random() * 6 - 3,
+                vy: type === 'firework' ? Math.random() * -6 - 2 : Math.random() * 4 + 1,
+                size: Math.random() * 4 + 2,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                alpha: 1,
+                decay: Math.random() * 0.015 + 0.01,
+                type
+            };
+        }
+
+        function triggerEffectsLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Continuous randomized fireworks launching points
+            if (Math.random() < 0.05) {
+                const targetX = Math.random() * canvas.width;
+                const targetY = Math.random() * (canvas.height * 0.6);
+                for (let i = 0; i < 30; i++) {
+                    particles.push(createParticle(targetX, targetY, 'firework'));
+                }
+            }
+
+            // Continuous Confetti spawn flow
+            if (Math.random() < 0.2) {
+                particles.push(createParticle(Math.random() * canvas.width, -10, 'confetti'));
+            }
+
+            particles.forEach((p, index) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= p.decay;
+
+                ctx.save();
+                ctx.globalAlpha = p.alpha;
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                if (p.type === 'firework') {
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                } else {
+                    ctx.fillRect(p.x, p.y, p.size * 1.5, p.size);
+                }
+                ctx.fill();
+                ctx.restore();
+
+                if (p.alpha <= 0) particles.splice(index, 1);
+            });
+
+            animationFrameId = requestAnimationFrame(triggerEffectsLoop);
+        }
+
+        // Option A: YES Decision Point
+        document.getElementById('btn-yes').addEventListener('click', () => {
+            canvas.style.display = 'block';
+            resizeCanvas();
+            triggerEffectsLoop();
+            
+            document.getElementById('outcome-icon-container').innerHTML = `
+                <svg class="heartbeat-icon" viewBox="0 0 32 32" style="fill: #c9184a; width:100px; height:100px;">
+                    <path d="M16 28.5s-12-7.16-12-14.5C4 8.58 8.03 5 13 5c2.98 0 5.12 1.57 3 4.25C13.88 5.57 16.02 5 19 5c4.97 0 9 3.58 9 9 0 7.34-12 14.5-12 14.5z"/>
+                </svg>
+            `;
+            document.getElementById('outcome-text').textContent = "Thank you for giving my heart a chance.";
+            navigateToScreen('screen-outcome');
+        });
+
+        // Option B: THINK Decision Point
+        document.getElementById('btn-think').addEventListener('click', () => {
+            document.getElementById('outcome-icon-container').innerHTML = `
+                <div style="font-size: 4rem; margin-bottom: 1rem; animation: heartbeat 2s infinite ease-in-out;">🌸</div>
+            `;
+            document.getElementById('outcome-text').textContent = "I’ll wait patiently. Thank you for reading my heart.";
+            navigateToScreen('screen-outcome');
+        });
+    </script>
+</body>
+</html>
